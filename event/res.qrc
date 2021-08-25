@@ -1,0 +1,42 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/(127).png</file>
+        <file>img/(128).png</file>
+        <file>img/(129).png</file>
+        <file>img/(130).png</file>
+        <file>img/(131).png</file>
+        <file>img/(132).png</file>
+        <file>img/(133).png</file>
+        <file>img/(134).png</file>
+        <file>img/(135).png</file>
+        <file>img/(136).png</file>
+        <file>img/(137).png</file>
+        <file>img/(138).png</file>
+        <file>img/(139).png</file>
+        <file>img/(140).png</file>
+        <file>img/(141).png</file>
+        <file>img/(142).png</file>
+        <file>img/(143).png</file>
+        <file>img/(144).png</file>
+        <file>img/(145).png</file>
+        <file>img/(146).png</file>
+        <file>img/(147).png</file>
+        <file>img/(148).png</file>
+        <file>img/(149).png</file>
+        <file>img/(150).png</file>
+        <file>img/(151).png</file>
+        <file>img/(152).png</file>
+        <file>img/(153).png</file>
+        <file>img/(154).png</file>
+        <file>img/(155).png</file>
+        <file>img/(156).png</file>
+        <file>img/(157).png</file>
+        <file>img/(158).png</file>
+        <file>img/(159).png</file>
+        <file>img/(160).png</file>
+        <file alias="2">hudie_down.jpeg</file>
+        <file alias="1">hudie_up.jpeg</file>
+        <file>1.jpeg</file>
+        <file>2.jpeg</file>
+    </qresource>
+</RCC>

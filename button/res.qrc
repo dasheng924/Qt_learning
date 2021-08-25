@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/(127).png</file>
+        <file>img/(128).png</file>
+        <file>img/(129).png</file>
+        <file>img/(130).png</file>
+        <file>img/(131).png</file>
+        <file>img/(132).png</file>
+        <file>img/(133).png</file>
+        <file>img/(134).png</file>
+        <file>img/(135).png</file>
+        <file>img/(136).png</file>
+    </qresource>
+</RCC>
