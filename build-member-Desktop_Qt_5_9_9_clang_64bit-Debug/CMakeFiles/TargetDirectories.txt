@@ -1,3 +1,0 @@
-/Users/sunguosheng/Code/reQt/build-member-Desktop_Qt_5_9_9_clang_64bit-Debug/CMakeFiles/rebuild_cache.dir
-/Users/sunguosheng/Code/reQt/build-member-Desktop_Qt_5_9_9_clang_64bit-Debug/CMakeFiles/edit_cache.dir
-/Users/sunguosheng/Code/reQt/build-member-Desktop_Qt_5_9_9_clang_64bit-Debug/CMakeFiles/member.dir

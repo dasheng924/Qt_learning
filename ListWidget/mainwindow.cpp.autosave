@@ -1,0 +1,173 @@
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+
+#include <QListWidget>
+#include <QListWidgetItem>
+#include <QTableWidget>
+#include <QTableWidgetItem>
+#include <QTreeWidget>
+#include <QTreeWidgetItem>
+#include <QDebug>
+#include <QTime>
+#include <QGridLayout>
+
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+    //showListWidget();
+    showTreeWidget();
+
+    qsrand(QTime(0,0).secsTo(QTime::currentTime()));
+
+
+
+
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+
+}
+
+void MainWindow::showListWidget()
+{
+    QListWidget *listWidget = new QListWidget(this);
+    listWidget->setWindowTitle("QListWidget");
+    listWidget->resize(400,400);
+    listWidget->setViewMode(QListView::ListMode);
+    listWidget->setMovement(QListView::Free);//项目可以自由的移动
+    listWidget->setFlow(QListView::TopToBottom);//从上到下
+    listWidget->setResizeMode(QListView::Adjust);//视图调整大小时,这些项目将再次布局
+    listWidget->setSpacing(3);//设置每个项目之间的距离
+
+
+    //1.一种添加项目的简单办法:
+    new QListWidgetItem("aaa",listWidget);
+
+    //2.创建项目的时候就添加到listwidget
+    for (int i = 0;i<10;++i) {
+        QListWidgetItem *item = new QListWidgetItem(QString("%1%2%3").arg(char('b'+i)).arg(char('b'+i)).arg(char('b'+i))
+                                                        ,listWidget);
+        item->setToolTip(QString("this is %1").arg('b'+i));
+    }
+    listWidget->sortItems(Qt::DescendingOrder);//按照字母降序排列
+    //listWidget->sortItems(Qt::AscendingOrder);//按照字符升序排列
+
+    //3.先创建好项目,然后设置项目的相关属性
+    QListWidgetItem *item = new QListWidgetItem;
+    item->setText("我是先创建项目,然后设置项目属性添加进来的");
+    item->setToolTip("我是单独设置,添加进来的");
+    item->setTextColor(Qt::green);//设置字体颜色
+    item->setTextAlignment(Qt::AlignCenter);//设置文字对齐的方式
+    listWidget->insertItem(0,item);//插入的时候,指定插入的位置
+
+    int row = 1;
+    listWidget->takeItem(row);//删除对应的行
+    delete listWidget->item(row);//删除掉对应的内存
+
+    //获取一些信息
+    qDebug()<<"获取当前的行数:"<<listWidget->count();
+    qDebug()<<"获取第3行的内容:"<<listWidget->item(2)->text();
+}
+
+
+//生成随机数
+float generateRand(float min, float max)
+{
+    static bool seedStatus;
+    if (!seedStatus)
+    {
+        qsrand(QTime(0, 0, 0).secsTo(QTime::currentTime()));
+        seedStatus = true;
+    }
+    if(min>max)
+    {
+        float temp=min;
+        min=max;
+        max=temp;
+    }
+    double diff = fabs(max-min);
+    double m1=(double)(qrand()%100)/100;
+    double retval=min+m1*diff;
+    return retval;
+}
+
+void MainWindow::showTreeWidget()
+{
+    QTreeWidget *treeWidget = new QTreeWidget(this);
+    treeWidget->resize(800,600);
+    treeWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);//按住crtl可以不连续选择
+    QGridLayout *gLayout = new QGridLayout;
+    gLayout->addWidget(treeWidget);
+    centralWidget()->setLayout(gLayout);
+
+
+    treeWidget->setColumnCount(4);//添加项目之前,必须设置对应的列数
+
+    treeWidget->setHeaderLabels(QStringList()<<"group"<<"Name"<<"Age"<<"Score");
+    //标头的背景色
+    treeWidget->setStyleSheet("QHeaderView::section{background:rgba(85,180,200,150)}");
+    //标头的前景色,第一个项目的前颜色
+    treeWidget->headerItem()->setForeground(0,QBrush(QColor(255,200,0)));
+    //设置标头的字体,第一个项目的字体
+    QFont font = treeWidget->headerItem()->font(0);
+    font.setBold(true);
+    font.setPointSize(20);
+    treeWidget->headerItem()->setFont(0,font);
+
+    treeWidget->clear();
+
+    //添加根节点项目
+    for (int i = 0;i<10;++i) {
+         QTreeWidgetItem *topItems = new QTreeWidgetItem(QStringList()<<QString("Group%1").arg(i));
+         treeWidget->addTopLevelItem(topItems);//添加根节点
+    }
+
+    //添加子节点
+    QList<QList<QTreeWidgetItem*>> treeItemList;
+
+    for (int j = 0;j<10;++j) {
+
+        QList<QTreeWidgetItem*> list;
+
+        for (int i = 0;i<5;++i) {
+
+
+            QTreeWidgetItem *item = new QTreeWidgetItem(QStringList()
+                                                        <<QString::number(i)
+                                                        <<QString("name:%1").arg(i)
+                                                        <<QString::number(qrand()%30+60)
+                                                        <<QString::number(generateRand(1,100)));
+
+            list.push_back(item);
+        }
+        treeItemList.push_back(list);
+    }
+
+    QList<QTreeWidgetItem*> eachItemList;
+    foreach(eachItemList,treeItemList)
+        treeWidget->topLevelItem(treeItemList.indexOf(eachItemList))->addChildren(eachItemList);
+
+    treeWidget->expandAll();//展开所有的节点
+
+    this->setWindowTitle("TreeWidget");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

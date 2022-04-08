@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file> ww.PNG</file>
+        <file>pp.jpeg</file>
+        <file>WechatIMG4179.jpeg</file>
+    </qresource>
+</RCC>

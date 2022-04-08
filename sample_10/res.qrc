@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/(212).png</file>
+        <file>images/(211).png</file>
+        <file>images/(210).png</file>
+        <file>images/(209).png</file>
+        <file>images/(208).png</file>
+        <file>images/(207).png</file>
+        <file>images/(206).png</file>
+        <file>images/(205).png</file>
+        <file>images/(204).png</file>
+        <file>images/(203).png</file>
+        <file>images/(202).png</file>
+        <file>images/(201).png</file>
+        <file>images/(200).png</file>
+        <file>images/(199).png</file>
+        <file>images/(198).png</file>
+        <file>images/(197).png</file>
+        <file>images/(196).png</file>
+        <file>images/(195).png</file>
+        <file>images/(194).png</file>
+        <file>images/(193).png</file>
+    </qresource>
+</RCC>
